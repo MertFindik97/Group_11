@@ -4,7 +4,7 @@ const { engine } = require('express-handlebars');
 const recipes = require('./data/recipes.json');
 
 const app = express();
-const port = 3001;
+const port = 3000;
 
 // Statische Dateien
 app.use(express.static(path.join(__dirname, 'public')));
@@ -16,8 +16,11 @@ app.set('views', path.join(__dirname,'views'));
 
 // Routen
 app.get('/', (req, res) => {
-  const random = recipes[Math.floor(Math.random()*recipes.length)];
-  res.render('recipes/detail', { recipe: random, title: random.title });
+  res.render('home', { title: 'Startseite' });
+});
+
+app.get('/login', (req, res) => {
+  res.render('login', { title: 'Login' });
 });
 
 // Random-Rezept-Route
@@ -25,7 +28,6 @@ app.get('/random', (req, res) => {
   const random = recipes[Math.floor(Math.random() * recipes.length)];
   res.render('recipes/detail', { recipe: random, title: random.title });
 });
-
 
 app.get('/recipes', (req, res) => {
   res.render('recipes/list', { recipes, title: 'Rezepte Liste' });
@@ -39,5 +41,7 @@ app.get('/recipes/:id', (req, res) => {
     res.status(404).send('Rezept nicht gefunden');
   }
 });
+
+
 
 app.listen(3000, () => console.log('Server läuft auf http://localhost:3000'));

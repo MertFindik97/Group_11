@@ -2,14 +2,21 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>{{#if title}}{{title}} - {{/if}}Rezepte Vorschlag</title>
+  <title>{{#if title}}{{title}} - {{/if}}JackPot</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <header>
-    <h1>Rezepte Vorschlagsseite</h1>
-    <nav><a href="/">Home</a> | <a href="/recipes">Rezepte</a></nav>
+    <h1>JackPot</h1>
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/recipes">Rezepte</a> |
+      <a href="/login">Login</a>
+    </nav>
   </header>
-  {{{body}}}
+
+  <main>
+    {{{body}}}
+  </main>
 </body>
 </html>
