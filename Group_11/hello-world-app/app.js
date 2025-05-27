@@ -1,33 +1,43 @@
 const express = require('express');
-const { engine } = require('express-handlebars');
 const path = require('path');
+const { engine } = require('express-handlebars');
+const recipes = require('./data/recipes.json');
 
 const app = express();
 const port = 3001;
 
-// Handlebars einrichten
-app.engine('handlebars', engine());
-app.set('view engine', 'handlebars');
-app.set('views', path.join(__dirname, 'views'));
-
-// Statische Dateien bereitstellen
+// Statische Dateien
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Handlebars konfigurieren
+app.engine('hbs', engine({ extname: 'hbs', defaultLayout: 'main', layoutsDir: path.join(__dirname,'views','layouts') }));
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname,'views'));
 
 // Routen
 app.get('/', (req, res) => {
-  res.render('home', { title: 'Startseite' });
+  const random = recipes[Math.floor(Math.random()*recipes.length)];
+  res.render('recipes/detail', { recipe: random, title: random.title });
 });
 
-app.get('/produkte', (req, res) => {
-  const produkte = [
-    { name: 'Produkt A', preis: 10 },
-    { name: 'Produkt B', preis: 20 },
-    { name: 'Produkt C', preis: 30 }
-  ];
-  res.render('produkte', { title: 'Produkte', produkte });
+// Random-Rezept-Route
+app.get('/random', (req, res) => {
+  const random = recipes[Math.floor(Math.random() * recipes.length)];
+  res.render('recipes/detail', { recipe: random, title: random.title });
 });
 
-// Server starten
-app.listen(port, () => {
-  console.log(`Server läuft auf http://localhost:${port}`);
+
+app.get('/recipes', (req, res) => {
+  res.render('recipes/list', { recipes, title: 'Rezepte Liste' });
 });
+
+app.get('/recipes/:id', (req, res) => {
+  const recipe = recipes.find(r => r.id == req.params.id);
+  if(recipe) {
+    res.render('recipes/detail', { recipe, title: recipe.title });
+  } else {
+    res.status(404).send('Rezept nicht gefunden');
+  }
+});
+
+app.listen(3000, () => console.log('Server läuft auf http://localhost:3000'));
