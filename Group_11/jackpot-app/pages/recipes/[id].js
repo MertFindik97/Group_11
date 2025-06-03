@@ -1,4 +1,5 @@
 import recipes from '../../data/recipes.json';
+import Image from 'next/image';
 
 export default function RecipeDetail({ recipe }) {
   if (!recipe) return <p>Recipe not found</p>;
@@ -6,7 +7,7 @@ export default function RecipeDetail({ recipe }) {
   return (
     <div>
       <h1>{recipe.title}</h1>
-      <img src={recipe.image} alt={recipe.title} width="300" />
+      <Image src={recipe.image} alt={recipe.title} width="300" />
       <p><strong>Ingredients:</strong></p>
       <ul>
         {recipe.ingredients.map((item, index) => (

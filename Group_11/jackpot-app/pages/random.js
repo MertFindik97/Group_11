@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import recipes from '../data/recipes.json';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function RandomRecipePage() {
   const [randomRecipe, setRandomRecipe] = useState(null);
@@ -16,7 +17,7 @@ export default function RandomRecipePage() {
       {randomRecipe ? (
         <div>
           <h2>{randomRecipe.title}</h2>
-          <img src={randomRecipe.image} width="300" alt={randomRecipe.title} />
+          <Image src={randomRecipe.image} width="300" alt={randomRecipe.title} />
           <p>
             <strong>Zutaten:</strong>
             <ul>

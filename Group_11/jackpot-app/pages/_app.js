@@ -1,17 +1,16 @@
 import '../public/css/style.css';
+import Link from 'next/link'
 
 export default function App({ Component, pageProps }) {
   return (
     <>
       <header>
-        <h1>JackPot</h1>
         <nav>
-          <a href="/">Home</a> | 
-          <a href="/recipes">Recipes</a> | 
-          <a href="/random">Random</a> | 
-          <a href="/login">Login</a>
+          <Link href="/">Home</Link> | 
+          <Link href="/recipes">Rezepte</Link> | 
+          <Link href="/random">Zufallsrezept</Link> | 
+          <Link href="/login">Login</Link>
         </nav>
-        <hr />
       </header>
       <main>
         <Component {...pageProps} />
