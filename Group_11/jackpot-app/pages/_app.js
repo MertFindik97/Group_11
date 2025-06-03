@@ -4,7 +4,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <header>
-        <h1>FridgeWizard</h1>
+        <h1>JackPot</h1>
         <nav>
           <a href="/">Home</a> | 
           <a href="/recipes">Recipes</a> | 
