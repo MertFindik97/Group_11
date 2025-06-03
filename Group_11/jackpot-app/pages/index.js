@@ -6,7 +6,8 @@ export default function Home() {
       <h1>Welcome to JackPot</h1>
       <p>Use the app to randomize recipes from your fridge ingredients!</p>
       <Link href="/recipes"><button>See All Recipes</button></Link>
-      <Link href="/random"><button>Get Random Recipe</button></Link>
+      <Link href="/random"><button>Rezept-Zufallsgenerator</button>
+</Link>
     </div>
   );
 }
