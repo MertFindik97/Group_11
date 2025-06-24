@@ -61,3 +61,20 @@ app.get('/recipes/:id', async (req, res) => {
 app.listen(port, () => {
   console.log(`✅ Server läuft auf http://localhost:${port}`);
 });
+app.get('/', (req, res) => {
+  res.render('home', { title: 'Home' });
+});
+
+app.get('/login', (req, res) => {
+  res.render('login', { title: 'Login' });
+});
+
+app.get('/recipes/random', async (req, res) => {
+  const count = await Recipe.countDocuments();
+  if (count === 0) {
+    return res.redirect('/recipes');
+  }
+  const rand = Math.floor(Math.random() * count);
+  const recipe = await Recipe.findOne().skip(rand).lean();
+  res.redirect(`/recipes/${recipe._id}`);
+});

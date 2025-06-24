@@ -1,10 +1,8 @@
 <h2>{{recipe.title}}</h2>
-<img src="{{recipe.image}}" alt="{{recipe.title}}" style="max-width:300px;">
+<p><em>{{recipe.description}}</em></p>
+<img src="{{recipe.image}}" alt="{{recipe.title}}" />
+<style="max-width:600px; width:100%; height:auto; display:block; margin:1rem 0;" />
 <h3>Zutaten</h3>
-<ul>
-  {{#each recipe.ingredients}}<li>{{this}}</li>{{/each}}
-</ul>
-<h3>Zubereitung</h3>
-<ol>
-  {{#each recipe.steps}}<li>{{this}}</li>{{/each}}
-</ol>
+<ul>{{#each recipe.ingredients}}<li>{{this}}</li>{{/each}}</ul>
+<h3>Anleitung</h3>
+<p>{{recipe.instructions}}</p>

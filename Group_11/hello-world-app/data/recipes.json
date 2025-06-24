@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Spaghetti Carbonara",
-    "image": "/images/carbonara.webp",
+    "image": "/images/carbonara.png",
     "ingredients": [
       "200g Spaghetti",
       "100g Pancetta",
@@ -10,7 +10,7 @@
       "50g Parmesan",
       "Pfeffer"
     ],
-    "steps": [
+    "description": [
       "Spaghetti kochen",
       "Pancetta anbraten",
       "Eier mit Parmesan mischen",
@@ -28,7 +28,7 @@
       "Br\u00fche",
       "Gew\u00fcrze"
     ],
-    "steps": [
+    "description": [
       "Gem\u00fcse schneiden",
       "Br\u00fche erhitzen",
       "Gem\u00fcse garen"
