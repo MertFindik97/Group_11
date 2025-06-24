@@ -69,6 +69,7 @@ app.get('/login', (req, res) => {
   res.render('login', { title: 'Login' });
 });
 
+// 1) Zufalls-Rezept
 app.get('/recipes/random', async (req, res) => {
   const count = await Recipe.countDocuments();
   if (count === 0) {
@@ -77,4 +78,15 @@ app.get('/recipes/random', async (req, res) => {
   const rand = Math.floor(Math.random() * count);
   const recipe = await Recipe.findOne().skip(rand).lean();
   res.redirect(`/recipes/${recipe._id}`);
+});
+
+// 2) Detail-Ansicht per ID
+app.get('/recipes/:id', async (req, res) => {
+  try {
+    const recipe = await Recipe.findById(req.params.id).lean();
+    if (!recipe) return res.status(404).send('Rezept nicht gefunden');
+    res.render('recipes/detail', { recipe, title: recipe.title });
+  } catch {
+    res.status(400).send('Ungültige ID');
+  }
 });
