@@ -1,3 +1,11 @@
+
+//.env einlesen (falls du dotenv nutzt)
+require('dotenv').config();
+
+// MongoDB-Verbindung herstellen
+require('./db'); // 
+
+
 const express = require('express');
 const path = require('path');
 const { engine } = require('express-handlebars');
