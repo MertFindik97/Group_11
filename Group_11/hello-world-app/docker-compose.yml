@@ -5,6 +5,14 @@ services:
     container_name: hello-world-app
     ports:
       - "3001:3001"
+  mongo:
+   image: mongo:6.0
+   container_name: hello-world-mongo
+   ports:
+     - "27017:27017"
+   volumes:
+     - mongo_data:/data/db
+
   nginx:
     image: nginx:alpine
     container_name: nginx-proxy
@@ -13,3 +21,7 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./public_html:/usr/share/nginx/html
+
+
+    volumes:
+    mongo_data:
