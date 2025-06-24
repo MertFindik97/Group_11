@@ -1,8 +1,9 @@
+<h2>Rezepte Liste</h2>
 <ul>
   {{#each recipes}}
-  <li>
-    <img src="{{this.image}}" alt="{{this.title}}" width="80" />
-    <a href="/recipes/{{this._id}}">{{this.title}}</a>
-  </li>
-{{/each}}
+    <li>
+      <img src="{{this.image}}" alt="{{this.title}}" width="80" style="vertical-align:middle;"/>
+      <a href="/recipes/{{this._id}}" style="margin-left:0.5rem;">{{this.title}}</a>
+    </li>
+  {{/each}}
 </ul>
