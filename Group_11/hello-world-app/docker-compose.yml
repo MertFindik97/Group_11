@@ -1,4 +1,3 @@
-# (Du kannst diese Version-Zeile weglassen, wenn du willst – sie ist inzwischen optional)
 version: '3'
 
 services:
