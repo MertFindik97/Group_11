@@ -11,9 +11,8 @@ RUN npm install
 # 4. Copy the rest of the project files
 COPY . .
 
-# 5. Build the Next.js app
-RUN npm run build
-
-# 6. Expose port and start app
+# 5. Expose port and start app
 EXPOSE 3000
-CMD ["npm", "start"]
+
+# 6. Use environment variable to determine start command
+CMD ["sh", "-c", "if [ \"$NODE_ENV\" = 'production' ]; then npm run build && npm start; else npm run dev; fi"]

@@ -7,7 +7,7 @@ export default function RecipeDetail({ recipe }) {
   return (
     <div>
       <h1>{recipe.title}</h1>
-      <Image src={recipe.image} alt={recipe.title} width="300" />
+      <Image src={recipe.image} alt={recipe.title} width="300" height="300" />
       <p><strong>Ingredients:</strong></p>
       <ul>
         {recipe.ingredients.map((item, index) => (

@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  jackpot-app:
+    build: ./Group_11/jackpot-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./Group_11/jackpot-app:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - server
+  server:
+    build: ./Group_11/server
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./Group_11/server:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
