@@ -17,7 +17,7 @@ export default function RandomRecipePage() {
       {randomRecipe ? (
         <div>
           <h2>{randomRecipe.title}</h2>
-          <Image src={randomRecipe.image} width="300" alt={randomRecipe.title} />
+          <Image src={randomRecipe.image} width="300" height="300" alt={randomRecipe.title} />
           <p>
             <strong>Zutaten:</strong>
             <ul>
